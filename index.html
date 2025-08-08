@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI App</title>
+    <style>
+        /* 유틸리티 클래스 */
+        .text-center { text-align: center; }
+        .btn { padding: 10px 20px; margin: 5px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .btn:hover { background-color: #0056b3; }
+        .hidden { display: none; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div id="app" class="container text-center">
+        <!-- 앱 내용이 JavaScript로 동적으로 생성됩니다. -->
+    </div>
+
+    <script>
+        // 앱 초기화 함수
+        const initApp = () => {
+            const app = document.getElementById('app');
+            app.innerHTML = ''; // 초기화
+
+            const title = createTitle('MBTI 테스트');
+            const startButton = createButton('시작하기', startTest);
+
+            app.appendChild(title);
+            app.appendChild(startButton);
+        };
+
+        // 제목 생성 함수
+        const createTitle = (text) => {
+            const h1 = document.createElement('h1');
+            h1.textContent = text;
+            return h1;
+        };
+
+        // 버튼 생성 함수
+        const createButton = (text, onClick) => {
+            const button = document.createElement('button');
+            button.textContent = text;
+            button.className = 'btn';
+            button.addEventListener('click', onClick);
+            return button;
+        };
+
+        // 테스트 시작 함수
+        const startTest = () => {
+            const app = document.getElementById('app');
+            app.innerHTML = ''; // 초기화
+
+            const question = createTitle('질문 1: 당신은 새로운 사람을 만나는 것을 좋아하나요?');
+            const yesButton = createButton('예', () => nextQuestion('E'));
+            const noButton = createButton('아니오', () => nextQuestion('I'));
+
+            app.appendChild(question);
+            app.appendChild(yesButton);
+            app.appendChild(noButton);
+        };
+
+        // 다음 질문 함수
+        const nextQuestion = (answer) => {
+            setTimeout(() => {
+                alert(`당신의 선택: ${answer}`); // 다음 질문 로직 추가 예정
+                initApp(); // 임시로 초기화로 돌아감
+            }, 2000); // 2초 딜레이
+        };
+
+        // 앱 초기화 실행
+        initApp();
+    </script>
+</body>
+</html>

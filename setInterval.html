@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #root {
+      width: 400px;
+      height: 400px;
+      background-color: cadetblue;
+    }
+
+    #target {
+      width: 10px;
+      height: 10px;
+      background-color: coral;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="target"></div>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    const target = document.getElementById('target');
+
+    root.style.position = 'relative';
+    target.style.position = 'absolute';
+
+    let handle = 0;
+
+    target.style.top = handle + 'px';
+    target.style.left = handle + 'px';
+
+    const timer = setInterval(()=> {
+      handle++;
+      target.style.top = handle + 'px';
+      target.style.left = handle + 'px';
+      if (handle > 400) {
+        clearInterval(timer);
+      }
+    }, 160)
+
+
+  </script>
+
+</body>
+</html>

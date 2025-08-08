@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비동기 vs 동기</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      background-color: #007BFF;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="box" class="box"></div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    const moveBox = () => {
+      setTimeout(() => {
+        box.style.transform = 'translate(100px, 0)'; // 오른쪽으로 이동
+
+        setTimeout(() => {
+          box.style.transform = 'translate(100px, 100px)'; // 아래로 이동
+
+          setTimeout(() => {
+            box.style.transform = 'translate(0, 100px)'; // 왼쪽으로 이동
+
+            setTimeout(() => {
+              box.style.transform = 'translate(0, 0)'; // 위로 이동 (원위치)
+            }, 200);
+          }, 500);
+        }, 3000);
+      }, 2000);
+    };
+
+    moveBox();
+  </script>
+</body>
+</html>
